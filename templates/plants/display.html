@@ -4,6 +4,65 @@
 {% block title %} Plants {% endblock %}
 
 {% block content %}
+<!-- Product section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://watchandlearn.scholastic.com/content/dam/classroom-magazines/watchandlearn/videos/animals-and-plants/plants/what-are-plants-/What-Are-Plants.jpg" alt="..." width="400" height="400" style="object-fit: cover !important;"/></div>
+            <div class="col-md-6">
+                <div class="small mb-1">{{ plant.category }} - {{ plant.subcategory}}</div>
+                <h1 class="display-5 fw-bolder">{{ plant.variety }}</h1>
+                <div class="fs-5 mb-5">
+                    <span>Pronunciation: {{ plant.pronunciation }}</span>
+                </div>
+                <p class="lead">{{ plant.description }}</p>
+                <!--
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+                </div>
+            -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+            <p>Zone: {{ plant.zone}}</p>
+            <p>Minimum Temp: {{ plant.min_temp }}</p>
+            <p>Difficulty: {{ plant.difficulty }}</p>
+            <p>Spread: {{ plant.spread }}</p>
+            <p>Growth Rate: {{ plant.growth_rate}}</p>
+            <p>Companion Plants: {{ plant.companion_plant }}</p>
+            <p>Blooming Fruit: {{ plant.blooming_fruit }}</p>
+            <p>Summer Foliage: {{ plant.summer_foliage}}</p>
+            <p>Fall Foliage: {{ plant.foliage }}</p>
+      </div>
+      <div class="col-sm">
+        <p>Flower Color: {{ plant.flower_color }}</p>
+            <p>Uses Characteristics: {{ plant.uses_characteristics }}</p>
+            <p>Price: {{ plant.price }}</p>
+            <p>Deer Resistant: {{ plant.deer_resistant }}</p>
+            <p>Drought Tolerant: {{ plant.drought_tolerant }}</p>
+            <p>Pollin Attractor: {{ plant.attracts_pollinators }}</p>
+            <p>Ground Cover: {{ plant.ground_cover }}</p>
+            <p>Tips: {% for tip in plant.tips.all %}<br>{{ tip.name }}{% endfor %}</p>
+      </div>
+      <div class="col-sm">
+        <p>Sun Exposure: {% for items in plant.sun_exposure.all %}{{ items.description }}, {% endfor %}</p>
+            <p>Soil Moisture: {% for items in plant.soil_moisture.all %}{{ items.description }}{% endfor %}</p>
+            <p>Soil Type: {% for items in plant.soil_type.all %}{{ items.description }}{% endfor %}</p>
+            <p>Habit: {% for items in plant.habit.all %}{{ items.description }}{% endfor %}</p>
+      </div>
+    </div>
+  </div>
+
+  <!--
 <div class="container">
     <p>Plant</p>
         <p>Name: {{ plant.variety }}</p>
@@ -37,7 +96,7 @@
         
 
 </div>
-
+-->
 
 
 {% endblock %}

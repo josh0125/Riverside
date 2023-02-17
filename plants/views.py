@@ -7,18 +7,22 @@ from .models import Plant, Category
 # INDEX PAGE
 def indexPage(request):
     data = Plant.objects.all()
+    categories = Category.objects.all()
 
     context = {
-        "plant" : data 
+        "plant" : data,
+        "categories" : categories
     }
     return render(request, 'plants/index.html', context)
 
 # ABOUT PAGE
 def aboutPage(request):
     data = Plant.objects.all()
+    categories = Category.objects.all()
 
     context = {
-        "plant" : data 
+        "plant" : data,
+        "categories" : categories
     }
     return render(request, 'plants/about.html', context)
 
@@ -26,17 +30,22 @@ def aboutPage(request):
 # PLANT PAGE
 def plantPage(request):
     data = Plant.objects.all()
+    categories = Category.objects.all()
 
     context = {
-        "plants" : data
+        "plants" : data,
+        "categories" : categories
     }
     return render(request, 'plants/plants.html', context)
 
 def onePlantDisplayPage(request, iID):
     data = Plant.objects.get(id=iID)
-    print(data.botanical_name)
+    categories = Category.objects.all()
+    #print(data.botanical_name)
+
     context = {
-        "plant" : data 
+        "plant" : data,
+        "categories" : categories
     }
     return render(request, 'plants/display.html', context)
 
@@ -44,6 +53,7 @@ def onePlantDisplayPage(request, iID):
 # CATEGORY PAGES
 def categoryPage(request):
     data = Category.objects.all()
+    categories = Category.objects.all()
 
     context = {
         "categories" : data
@@ -53,12 +63,15 @@ def categoryPage(request):
 # Filters all Plants with that specific category
 def categoryDisplayPage(request, sName):
     category = Category.objects.get(name=sName)
+    categories = Category.objects.all()
 
 
     data = Plant.objects.filter(category = category)
 
     context = {
-        "plants" : data 
+        "plants" : data,
+        "category" : category,
+        "categories" : categories
     }
     return render(request, 'plants/plants.html', context)
 
