@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% load static %}
+ 
+{% block title %} Plants {% endblock %}
+
+{% block content %}
+<div>
+    <p>Plant List</p>
+    {% for plant in plants %}
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'plant' iID=plant.id %}">{{ plant.variety }}</a>
+    {% endfor %}
+
+</div>
+
+
+
+{% endblock %}

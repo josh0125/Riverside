@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load static %}
+ 
+{% block title %} Category {% endblock %}
+
+{% block content %}
+<div>
+    <p>Category</p>
+    {% for category in categories %}
+        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{% url 'category' sName=category.name %}">{{ category.name }}</a>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
