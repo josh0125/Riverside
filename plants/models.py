@@ -74,7 +74,7 @@ class Plant(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     subcategory = models.ForeignKey('Subcategory', null=True, blank=True, on_delete=models.SET_NULL)
     description = models.CharField(max_length=2000, blank=True, null=True)
-    zone = models.IntegerField(default=0)
+    zone = models.IntegerField(default=0, blank=True, null=True)
     min_temp = models.CharField(max_length=10, blank=True, null=True)
     tips = models.ManyToManyField(Tip, blank=True)
     sun_exposure = models.ManyToManyField(Sun_Exposure, blank=True)
@@ -90,12 +90,16 @@ class Plant(models.Model):
     summer_foliage = models.CharField(max_length=100, blank=True, null=True)
     fall_foliage = models.CharField(max_length=100, blank=True, null=True)
     flower_color = models.CharField(max_length=100, blank=True, null=True)
-    uses_characteristics = models.CharField(max_length=100, blank=True, null=True)
+    uses_characteristics = models.CharField(max_length=1000, blank=True, null=True)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     deer_resistant = models.CharField(max_length=50, blank=True, null=True)
     drought_tolerant = models.CharField(max_length=50, blank=True, null=True)
     attracts_pollinators = models.CharField(max_length=50, blank=True, null=True)
     ground_cover = models.CharField(max_length=50, blank=True, null=True)
+    photo_1 = models.ImageField(upload_to='photos', blank=True, null=True)
+    photo_2 = models.ImageField(upload_to='photos', blank=True, null=True)
+    photo_3 = models.ImageField(upload_to='photos', blank=True, null=True)
+    qr_code = models.ImageField(upload_to='photos', blank=True, null=True)
  
     class Meta:
         db_table = 'plant_data'

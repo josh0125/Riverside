@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Plant, Category
 
 # Create your views here.
@@ -75,3 +75,17 @@ def categoryDisplayPage(request, sName):
     }
     return render(request, 'plants/plants.html', context)
 
+
+# Search Pages
+def searchPage(request):
+    search = (request.GET['search'])
+    data = Plant.objects.filter(variety__icontains=search)
+
+    categories = Category.objects.all()
+    context = {
+        "plants" : data,
+        "categories" : categories,
+        "search": search
+    }
+
+    return render(request, 'plants/plants.html', context)
