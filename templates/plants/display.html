@@ -68,33 +68,39 @@
 
 <div class="container m-auto p-2 m-sm-3 p-sm-3">
     <div class="row m-sm-3">
-        <div class="col-sm">
-                <p>Zone: {{ plant.zone}}</p>
-                <p>Minimum Temp: {{ plant.min_temp }}</p>
-                <p>Difficulty: {{ plant.difficulty }}</p>
-                <p>Spread: {{ plant.spread }}</p>
-                <p>Growth Rate: {{ plant.growth_rate}}</p>
-                <p>Companion Plants: {{ plant.companion_plant }}</p>
-                <p>Blooming Fruit: {{ plant.blooming_fruit }}</p>
-                <p>Summer Foliage: {{ plant.summer_foliage}}</p>
-                <p>Fall Foliage: {{ plant.foliage }}</p>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-6">
+                        <p>Zone: {{ plant.zone}}</p>
+                        <p>Minimum Temp: {{ plant.min_temp }}</p>
+                        <p>Difficulty: {{ plant.difficulty }}</p>
+                        <p>Spread: {{ plant.spread }}</p>
+                        <p>Growth Rate: {{ plant.growth_rate}}</p>
+                        <p>Companion Plants: {{ plant.companion_plant }}</p>
+                        <p>Blooming Fruit: {{ plant.blooming_fruit }}</p>
+                        <p>Summer Foliage: {{ plant.summer_foliage}}</p>
+                        <p>Fall Foliage: {{ plant.foliage }}</p>
+                        <p>Flower Color: {{ plant.flower_color }}</p>
+                        <p>Uses Characteristics: {{ plant.uses_characteristics }}</p>
+                </div>
+                <div class="col-sm-6">
+                        <p>Price: {{ plant.price }}</p>
+                        <p>Deer Resistant: {{ plant.deer_resistant }}</p>
+                        <p>Drought Tolerant: {{ plant.drought_tolerant }}</p>
+                        <p>Pollin Attractor: {{ plant.attracts_pollinators }}</p>
+                        <p>Ground Cover: {{ plant.ground_cover }}</p>
+                        <p>Tips: {% for tip in plant.tips.all %}<br>{{ tip.name }}{% endfor %}</p>
+                        <p>Sun Exposure: {% for items in plant.sun_exposure.all %}{{ items.description }}, {% endfor %}</p>
+                        <p>Soil Moisture: {% for items in plant.soil_moisture.all %}{{ items.description }}{% endfor %}</p>
+                        <p>Soil Type: {% for items in plant.soil_type.all %}{{ items.description }}{% endfor %}</p>
+                        <p>Habit: {% for items in plant.habit.all %}{{ items.description }}{% endfor %}</p>
+                </div>
+            </div>
         </div>
-        <div class="col-sm">
-            <p>Flower Color: {{ plant.flower_color }}</p>
-                <p>Uses Characteristics: {{ plant.uses_characteristics }}</p>
-                <p>Price: {{ plant.price }}</p>
-                <p>Deer Resistant: {{ plant.deer_resistant }}</p>
-                <p>Drought Tolerant: {{ plant.drought_tolerant }}</p>
-                <p>Pollin Attractor: {{ plant.attracts_pollinators }}</p>
-                <p>Ground Cover: {{ plant.ground_cover }}</p>
-                <p>Tips: {% for tip in plant.tips.all %}<br>{{ tip.name }}{% endfor %}</p>
-        </div>
-        <div class="col-sm">
-            <p>Sun Exposure: {% for items in plant.sun_exposure.all %}{{ items.description }}, {% endfor %}</p>
-                <p>Soil Moisture: {% for items in plant.soil_moisture.all %}{{ items.description }}{% endfor %}</p>
-                <p>Soil Type: {% for items in plant.soil_type.all %}{{ items.description }}{% endfor %}</p>
-                <p>Habit: {% for items in plant.habit.all %}{{ items.description }}{% endfor %}</p>
-        </div>
+        
+        <div class="col-sm-2"></div>
+
     </div>
 </div>
 </div>

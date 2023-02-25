@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Plant, Category
+from django.core.paginator import Paginator
+
+
 
 # Create your views here.
 
@@ -30,11 +33,23 @@ def aboutPage(request):
 # PLANT PAGE
 def plantPage(request):
     data = Plant.objects.all()
+
+    items_per_page = 9
+    paginator = Paginator(data, items_per_page)
+
+    page_number = request.GET.get('page')
+
+    if not page_number:
+        page_number = 1
+
+    page = paginator.get_page(page_number)
+    
     categories = Category.objects.all()
 
     context = {
         "plants" : data,
-        "categories" : categories
+        "categories" : categories,
+        "page": page
     }
     return render(request, 'plants/plants.html', context)
 
@@ -68,10 +83,20 @@ def categoryDisplayPage(request, sName):
 
     data = Plant.objects.filter(category = category)
 
+    items_per_page = 9
+    paginator = Paginator(data, items_per_page)
+
+    page_number = request.GET.get('page')
+    if not page_number:
+        page_number = 1
+
+    page = paginator.get_page(page_number)
+
     context = {
         "plants" : data,
         "category" : category,
-        "categories" : categories
+        "categories" : categories,
+        "page": page
     }
     return render(request, 'plants/plants.html', context)
 
@@ -79,13 +104,27 @@ def categoryDisplayPage(request, sName):
 # Search Pages
 def searchPage(request):
     search = (request.GET['search'])
+    if search == '':
+        return redirect('index')
+
+    page_number = (request.GET.get('page'))
     data = Plant.objects.filter(variety__icontains=search)
+
+    items_per_page = 9
+    paginator = Paginator(data, items_per_page)
+
+   
+    if not page_number:
+        page_number = 1
+
+    page = paginator.get_page(page_number)
 
     categories = Category.objects.all()
     context = {
         "plants" : data,
         "categories" : categories,
-        "search": search
+        "search": search,
+        "page": page
     }
 
     return render(request, 'plants/plants.html', context)
