@@ -38,5 +38,10 @@
         "model" : "plants.Category", 
         "pk": "8", 
         "fields" : {"name": "Annual"}
+    },
+    { 
+        "model" : "plants.Category", 
+        "pk": "9", 
+        "fields" : {"name": "None"}
     }
 ]

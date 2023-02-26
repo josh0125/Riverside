@@ -72,24 +72,24 @@
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-6">
-                        <p>Zone: {{ plant.zone}}</p>
-                        <p>Minimum Temp: {{ plant.min_temp }}</p>
-                        <p>Difficulty: {{ plant.difficulty }}</p>
-                        <p>Spread: {{ plant.spread }}</p>
-                        <p>Growth Rate: {{ plant.growth_rate}}</p>
-                        <p>Companion Plants: {{ plant.companion_plant }}</p>
-                        <p>Blooming Fruit: {{ plant.blooming_fruit }}</p>
-                        <p>Summer Foliage: {{ plant.summer_foliage}}</p>
-                        <p>Fall Foliage: {{ plant.foliage }}</p>
-                        <p>Flower Color: {{ plant.flower_color }}</p>
-                        <p>Uses Characteristics: {{ plant.uses_characteristics }}</p>
+                        <p>Zone: {% if plant.zone == 'nan' %}None{% else %}{{ plant.zone}}{% endif %}</p>
+                        <p>Minimum Temp: {% if plant.min_temp == 'nan' %}None{% else %}{{ plant.min_temp }}{% endif %}</p>
+                        <p>Difficulty: {% if plant.difficulty == 'nan' %}None{% else %}{{ plant.difficulty }}{% endif %}</p>
+                        <p>Spread: {% if plant.spread == 'nan' %}None{% else %}{{ plant.spread }}{% endif %}</p>
+                        <p>Growth Rate: {% if plant.growth_rate == 'nan' %}None{% else %}{{ plant.growth_rate}}{% endif %}</p>
+                        <p>Companion Plants: {% if plant.companion_plant == 'nan' %}None{% else %}{{ plant.companion_plant }}{% endif %}</p>
+                        <p>Blooming Fruit: {% if plant.blooming_fruit == 'nan' %}None{% else %}{{ plant.blooming_fruit }}{% endif %}</p>
+                        <p>Summer Foliage: {% if plant.summer_foliage == 'nan' %}None{% else %}{{ plant.summer_foliage}}{% endif %}</p>
+                        <p>Fall Foliage: {% if plant.foliage == 'nan' %}None{% else %}{{ plant.foliage }}{% endif %}</p>
+                        <p>Flower Color: {% if plant.flower_color == 'nan' %}None{% else %}{{ plant.flower_color }}{% endif %}</p>
+                        <p>Uses Characteristics: {% if plant.uses_characteristics == 'nan' %}None{% else %}{{ plant.uses_characteristics }}{% endif %}</p>
                 </div>
                 <div class="col-sm-6">
-                        <p>Price: {{ plant.price }}</p>
-                        <p>Deer Resistant: {{ plant.deer_resistant }}</p>
-                        <p>Drought Tolerant: {{ plant.drought_tolerant }}</p>
-                        <p>Pollin Attractor: {{ plant.attracts_pollinators }}</p>
-                        <p>Ground Cover: {{ plant.ground_cover }}</p>
+                        <p>Price: {% if plant.price == 'nan' %}None{% else %}{{ plant.price }}{% endif %}</p>
+                        <p>Deer Resistant: {% if plant.deer_resistant == 'nan' %}None{% else %}{{ plant.deer_resistant }}{% endif %}</p>
+                        <p>Drought Tolerant: {% if plant.drought_tolerant == 'nan' %}None{% else %}{{ plant.drought_tolerant }}{% endif %}</p>
+                        <p>Pollin Attractor: {% if plant.attracts_pollinators == 'nan' %}None{% else %}{{ plant.attracts_pollinators }}{% endif %}</p>
+                        <p>Ground Cover: {% if plant.ground_cover == 'nan' %}None{% else %}{{ plant.ground_cover }}{% endif %}</p>
                         <p>Tips: {% for tip in plant.tips.all %}<br>{{ tip.name }}{% endfor %}</p>
                         <p>Sun Exposure: {% for items in plant.sun_exposure.all %}{{ items.description }}, {% endfor %}</p>
                         <p>Soil Moisture: {% for items in plant.soil_moisture.all %}{{ items.description }}{% endfor %}</p>

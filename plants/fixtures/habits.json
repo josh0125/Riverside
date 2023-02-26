@@ -138,5 +138,10 @@
         "model" : "plants.Habit", 
         "pk": "28", 
         "fields" : {"description": "Assym"}
+    }, 
+    { 
+        "model" : "plants.Habit", 
+        "pk": "29", 
+        "fields" : {"description": "Pyramidal"}
     }
 ]
