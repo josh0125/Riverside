@@ -163,7 +163,7 @@
     },
     { 
         "model" : "plants.Soil_Moisture", 
-        "pk": "32", 
+        "pk": "33", 
         "fields" : {"description": "None"}
     }
 ]

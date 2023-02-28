@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.html import mark_safe
+
 
 # Create your models here.
 
@@ -76,7 +78,7 @@ class Plant(models.Model):
     description = models.CharField(max_length=2000, blank=True, null=True)
     zone = models.IntegerField(default=0, blank=True, null=True)
     min_temp = models.CharField(max_length=10, blank=True, null=True)
-    tips = models.ManyToManyField(Tip, blank=True)
+    tips = models.CharField(max_length=2000, blank=True,  null=True)
     sun_exposure = models.ManyToManyField(Sun_Exposure, blank=True)
     soil_type = models.ManyToManyField(Soil_Type, blank=True)
     difficulty = models.CharField(max_length=50, blank=True, null=True)
@@ -99,13 +101,16 @@ class Plant(models.Model):
     photo_1 = models.ImageField(upload_to='photos', blank=True, null=True)
     photo_2 = models.ImageField(upload_to='photos', blank=True, null=True)
     photo_3 = models.ImageField(upload_to='photos', blank=True, null=True)
-    qr_code = models.ImageField(upload_to='photos', blank=True, null=True)
+    qr_code = models.ImageField(upload_to='QR', blank=True, null=True)
  
     class Meta:
         db_table = 'plant_data'
  
     def __str__(self):
         return self.variety
+    
+    def img_preview(self): #new
+        return mark_safe(f'<img src = "{self.qr_code.url}" width = "300"/>')
 
 
 '''

@@ -19,7 +19,7 @@ def indexPage(request):
     return render(request, 'plants/index.html', context)
 
 # ABOUT PAGE
-def aboutPage(request):
+def contactPage(request):
     data = Plant.objects.all()
     categories = Category.objects.all()
 
@@ -27,12 +27,13 @@ def aboutPage(request):
         "plant" : data,
         "categories" : categories
     }
-    return render(request, 'plants/about.html', context)
+    return render(request, 'plants/contact.html', context)
 
 
 # PLANT PAGE
 def plantPage(request):
-    data = Plant.objects.all()
+    data = Plant.objects.get_queryset().order_by('id')
+    #data = Plant.objects.all()
 
     items_per_page = 9
     paginator = Paginator(data, items_per_page)
@@ -80,8 +81,8 @@ def categoryDisplayPage(request, sName):
     category = Category.objects.get(name=sName)
     categories = Category.objects.all()
 
-
-    data = Plant.objects.filter(category = category)
+    data = Plant.objects.get_queryset().filter(category = category).order_by('id')
+    #data = Plant.objects.filter(category = category)
 
     items_per_page = 9
     paginator = Paginator(data, items_per_page)
@@ -108,7 +109,8 @@ def searchPage(request):
         return redirect('index')
 
     page_number = (request.GET.get('page'))
-    data = Plant.objects.filter(variety__icontains=search)
+    data = Plant.objects.get_queryset().filter(variety__icontains=search).order_by('variety')
+    # data = Plant.objects.filter(variety__icontains=search)
 
     items_per_page = 9
     paginator = Paginator(data, items_per_page)

@@ -143,5 +143,10 @@
         "model" : "plants.Habit", 
         "pk": "29", 
         "fields" : {"description": "Pyramidal"}
+    }, 
+    { 
+        "model" : "plants.Habit", 
+        "pk": "30", 
+        "fields" : {"description": "None"}
     }
 ]

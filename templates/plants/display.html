@@ -90,11 +90,11 @@
                         <p>Drought Tolerant: {% if plant.drought_tolerant == 'nan' %}None{% else %}{{ plant.drought_tolerant }}{% endif %}</p>
                         <p>Pollin Attractor: {% if plant.attracts_pollinators == 'nan' %}None{% else %}{{ plant.attracts_pollinators }}{% endif %}</p>
                         <p>Ground Cover: {% if plant.ground_cover == 'nan' %}None{% else %}{{ plant.ground_cover }}{% endif %}</p>
-                        <p>Tips: {% for tip in plant.tips.all %}<br>{{ tip.name }}{% endfor %}</p>
-                        <p>Sun Exposure: {% for items in plant.sun_exposure.all %}{{ items.description }}, {% endfor %}</p>
-                        <p>Soil Moisture: {% for items in plant.soil_moisture.all %}{{ items.description }}{% endfor %}</p>
-                        <p>Soil Type: {% for items in plant.soil_type.all %}{{ items.description }}{% endfor %}</p>
-                        <p>Habit: {% for items in plant.habit.all %}{{ items.description }}{% endfor %}</p>
+                        <p>Tips: {% if plant.tips == 'nan' %}None{% else %}{{ plant.tips }}{% endif %}
+                        <p>Sun Exposure: {% for items in plant.sun_exposure.all %}{{ items.description }} {% endfor %}</p>
+                        <p>Soil Moisture: {% for items in plant.soil_moisture.all %}{{ items.description }} {% endfor %}</p>
+                        <p>Soil Type: {% for items in plant.soil_type.all %}{{ items.description }} {% endfor %}</p>
+                        <p>Habit: {% for items in plant.habit.all %}{{ items.description }} {% endfor %}</p>
                 </div>
             </div>
         </div>
