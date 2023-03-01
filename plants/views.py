@@ -18,7 +18,7 @@ def indexPage(request):
     }
     return render(request, 'plants/index.html', context)
 
-# ABOUT PAGE
+# CONTACT PAGE
 def contactPage(request):
     data = Plant.objects.all()
     categories = Category.objects.all()
@@ -28,6 +28,17 @@ def contactPage(request):
         "categories" : categories
     }
     return render(request, 'plants/contact.html', context)
+
+# ERROR PAGE
+def error_404(request):
+    data = Plant.objects.all()
+    categories = Category.objects.all()
+
+    context = {
+        "plant" : data,
+        "categories" : categories
+    }
+    return render(request, 'plants/error.html', context)
 
 
 # PLANT PAGE
