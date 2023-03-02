@@ -4,7 +4,7 @@ import csv
 
 # Register your models here.
 
-from .models import Plant, Tip, Category, Subcategory, Sun_Exposure, Soil_Type, Soil_Moisture, Habit
+from .models import Plant, Category, Subcategory, Sun_Exposure, Soil_Type, Soil_Moisture, Habit
 
 # Register your models here.
 class PlantAdmin(admin.ModelAdmin):
@@ -13,11 +13,9 @@ class PlantAdmin(admin.ModelAdmin):
 
     change_form_template = 'custom_change_form.html'
 
-
 admin.site.register(Plant, PlantAdmin)
 admin.site.register(Category)
 admin.site.register(Subcategory)
-admin.site.register(Tip)
 admin.site.register(Sun_Exposure)
 admin.site.register(Soil_Type)
 admin.site.register(Soil_Moisture)

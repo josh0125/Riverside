@@ -22,15 +22,6 @@ class Subcategory(models.Model):
     def __str__(self):
         return self.name
 
-class Tip(models.Model):
-    name = models.CharField(max_length=1000)
- 
-    class Meta:
-        db_table = 'plant_tip'
- 
-    def __str__(self):
-        return self.name
-
 class Sun_Exposure(models.Model):
     description = models.CharField(max_length=100)
  
@@ -111,33 +102,4 @@ class Plant(models.Model):
     
     def img_preview(self): #new
         return mark_safe(f'<img src = "{self.qr_code.url}" width = "300"/>')
-
-
-'''
-class Plant(models.Model):
-    variety = models.CharField(max_length=100)
-    botanical_name = models.CharField(max_length=100, blank=True, null=True)
-    pronunciation = models.CharField(max_length=100, blank=True, null=True)
-    aliases = models.CharField(max_length=100, blank=True, null=True)
-    category = models.CharField(max_length=100, blank=True, null=True)
-    subcategory = models.CharField(max_length=100, blank=True, null=True)
-    description = models.CharField(max_length=2000, blank=True, null=True)
-    zone = models.IntegerField(default=0)
-    min_temp = models.CharField(max_length=10, blank=True, null=True)
-    tips = models.CharField(max_length=500, blank=True, null=True)
-    sun_exposure = models.CharField(max_length=50, blank=True, null=True)
-    soil_type = model.CharField(max_length=100, blank=True, null=True)
-    difficulty = models.CharField(max_length=50, blank=True, null=True)
-    soil_moisture = models.CharField(max_length=100, blank=True, null=True)
-    habit = models.CharField(max_length=100, blank=True, null=True)
-    spread = models.CharField(max_length=50, blank=True, null=True)
-    growth_rate = models.CharField(max_length=50, blank=True, null=True)
-    companion_plant = models.CharField(max_length=500, blank=True, null=True)
- 
-    class Meta:
-        db_table = 'plant_data'
- 
-    def __str__(self):
-        return self.variety
-'''
 
